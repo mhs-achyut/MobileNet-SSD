@@ -14,8 +14,8 @@ if if [ ! -d "snapshot" ];then
 	-gpu 0 2>&1 | tee /home/$USER/caffe_mobilenet_training.log
 else
 	unset -v latest
-	for file in "snapshot"/*; do
-	  [[ $file -nt $latest ]] && latest=$file
+	for file in "snapshot/*"; do
+	[[ $file -nt $latest ]] && latest=$file
 	done
 	../../build/tools/caffe train -solver="solver_train.prototxt" \
 	-weights="$latest" \
