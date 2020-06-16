@@ -11,7 +11,7 @@ if [ ! -d "snapshot" ];then
         mkdir -p snapshot
         ../../build/tools/caffe train -solver="solver_train.prototxt" \
         -weights="mobilenet_iter_73000.caffemodel" \
-        -gpu 0 2>&1 | tee /home/$USER/caffe_mobilenet_training.log
+        -gpu 0,1 2>&1 | tee /home/$USER/caffe_mobilenet_training.log
 else
         echo "snapshot folder exists"
         max=-1
@@ -25,5 +25,5 @@ else
         echo "latest snapshot model is: $max"
         ../../build/tools/caffe train -solver="solver_train.prototxt" \
         -weights="snapshot/mobilenet_iter_$max.caffemodel" \
-        -gpu 0 2>&1 | tee /home/$USER/caffe_mobilenet_training.log
+        -gpu 0,1 2>&1 | tee /home/$USER/caffe_mobilenet_training.log
 fi
