@@ -5,7 +5,7 @@ if ! test -f example/MobileNetSSD_train.prototxt ;then
         exit 1
 fi
 
-if ! test -f snapshot/*.caffemodel ;then
+if ! test -f ../snapshot/*.caffemodel ;then
 	echo "snapshot folder does not exist."
 	echo "using the default 73000_iter model"
 	mkdir -p snapshot
